@@ -40,21 +40,20 @@ handler.handleReqRes = (req, res) => {
 
     const choosenHandler = routes[trimmedPath] ? routes[trimmedPath] : notFoundHandler;
 
-    choosenHandler(requestProperties, (statusCode, payload) => {
-        const StatusCode = typeof statusCode === 'number' ? statusCode : 500;
-        const Payload = typeof payload === 'object' ? payload : {};
-
-        const payloadString = JSON.stringify(Payload);
-
-        // return the final response
-        res.writeHead(StatusCode);
-        res.end(payloadString);
-    });
-
     req.on('data', (buffer) => {
         realData += decoder.write(buffer);
     });
     req.on('end', () => {
+        choosenHandler(requestProperties, (statusCode, payload) => {
+            const StatusCode = typeof statusCode === 'number' ? statusCode : 500;
+            const Payload = typeof payload === 'object' ? payload : {};
+
+            const payloadString = JSON.stringify(Payload);
+
+            // return the final response
+            res.writeHead(StatusCode);
+            res.end(payloadString);
+        });
         realData += decoder.end();
         console.log(realData);
         // handle Response

@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index"
+    "start": "cross-env NODE_ENV=staging nodemon index",
+    "production": "cross-env NODE_ENV=production nodemon index",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "Ahmed Sazzad",
@@ -13,6 +15,7 @@
     "yarn": "^1.22.10"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "eslint": "7.2.0",
     "eslint-config-airbnb-base": "14.2.1",
     "eslint-config-prettier": "^8.3.0",
