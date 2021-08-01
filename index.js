@@ -17,8 +17,11 @@ const app = {};
 
 // testing file system
 // (dir, file, data, callback)
-data.create('test', 'newFile', { name: 'Bangladesh', language: 'Bangla' }, (err) => {
-    console.log(`error was ${err}`);
+// data.create('test', 'newFile', { name: 'Bangladesh', language: 'Bangla' }, (err) => {
+//     console.log(`error was ${err}`);
+// });
+data.read('test', 'newFile', (err, result) => {
+    console.log(`error was ${err} and data ${result}`);
 });
 
 // create Server
