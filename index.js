@@ -16,12 +16,23 @@ const data = require('./lib/data');
 const app = {};
 
 // testing file system
-// (dir, file, data, callback)
 // data.create('test', 'newFile', { name: 'Bangladesh', language: 'Bangla' }, (err) => {
 //     console.log(`error was ${err}`);
 // });
-data.read('test', 'newFile', (err, result) => {
-    console.log(`error was ${err} and data ${result}`);
+
+// read data from file
+// data.read('test', 'newFile', (err, result) => {
+//     console.log(`error was ${err} and data ${result}`);
+// });
+
+// update existing file
+// data.update('test', 'newFile', { name: 'USA', language: 'English' }, (err) => {
+//     console.log(`error was ${err}`);
+// });
+
+// delete existing file
+data.delete('test', 'newFile', (err) => {
+    console.log(`error was ${err}`);
 });
 
 // create Server
